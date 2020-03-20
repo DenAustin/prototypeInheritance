@@ -118,7 +118,7 @@ function Mankind(firstName, lastName) {
 //Greeting to mankind
 
 Mankind.prototype.salute = function() {
-   return `Graciea ${this.firstName} ${this.lastName}`
+   return `Gracias ${this.firstName} ${this.lastName}`
 }
 
 const mankind1 = new Mankind("Iria","Manuwopi")
@@ -126,8 +126,8 @@ const mankind1 = new Mankind("Iria","Manuwopi")
 console.log(mankind1.salute())
 
 //Higher order constructor if you like. we are calling Mankind 
-function Customer(firstName, last, phone, membership) {
-   Mankind.call(this, firstName, last);
+function Customer(firstName, surName, phone, membership) {
+   Mankind.call(this, firstName, surName);
 
    this.phone = phone;
    this.membership = membership
@@ -141,3 +141,9 @@ Customer.prototype = Object.create(Mankind.prototype)
 const customer1 = new Customer("John", "Josi", "555-777-234", "std")
 
 console.log(customer1.salute())
+console.log(`Our lovely ${customer1.salute()}`);
+
+
+// make custormer.prototype return methos
+Customer.prototype.constructor = Customer;
+
